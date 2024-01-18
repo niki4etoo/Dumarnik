@@ -6,7 +6,7 @@ function App() {
 
   return (
     <>
-      <div className='header'>Welcome to Dumarnik v0.0.1</div>
+      <div className='header'>Добре дошли в думарник</div>
       <Square />
     </>
   )
