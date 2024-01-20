@@ -1,0 +1,22 @@
+.userInput {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 2vh;
+}
+
+.inputActive {
+    border-radius: 0.5rem;
+    border: 1px solid blue;
+
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+}
+
+.inputActive:focus {
+    outline: none;
+    text-align: center;
+
+    
+}
