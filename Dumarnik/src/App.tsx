@@ -5,10 +5,12 @@ import MainInput from './components/UserInput/MainInput'
 
 function App() {
 
+  const numberOfCharacters = 64;
+
   return (
     <>
       <div className='header'>Добре дошли в думарник</div>
-      <Square />
+      <Square numberOfCharacters={numberOfCharacters} />
       <MainInput />
     </>
   )
