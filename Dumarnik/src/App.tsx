@@ -1,7 +1,7 @@
 import './App.css'
 
-import Square from './components/Square'
-import MainInput from './components/UserInput/MainInput'
+import Square from './components/GameBoard/Square'
+import MainInput from './components/GameBoard/UserInput/MainInput'
 
 function App() {
 
