@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 
-const inputFilePath = 'input.txt';
-const outputJsonFilePath = 'output.json';
+const inputFilePath = 'dictionary.txt';
+const outputJsonFilePath = 'dictionary.json';
 
 // Read the contents of the text file asynchronously
 fs.readFile(inputFilePath, 'utf8', (err, data) => {
@@ -19,22 +19,19 @@ fs.readFile(inputFilePath, 'utf8', (err, data) => {
 });
 
 // Function to parse text to a JavaScript object
-function parseTextToJsonObject(text: string): Record<string, string> {
+function parseTextToJsonObject(text: string): string[] {
   const lines = text.split('\n');
-  const result: Record<string, string> = {};
+  const result: string[] = [];
 
   lines.forEach(line => {
-    const [key, value] = line.split(':');
-    if (key && value) {
-      result[key.trim()] = value.trim();
-    } // to do
+    result.push(`${line}`)
   });
 
   return result;
 }
 
 // Function to write a JavaScript object to a JSON file
-function writeObjectToJsonFile(obj: Record<string, string>, outputPath: string): void {
+function writeObjectToJsonFile(obj: string[], outputPath: string): void {
   const jsonContent = JSON.stringify(obj, null, 2);
 
   fs.writeFile(outputPath, jsonContent, 'utf8', err => {

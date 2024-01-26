@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var fs = require("fs");
-var inputFilePath = 'input.txt';
-var outputJsonFilePath = 'output.json';
+var inputFilePath = 'dictionary.txt';
+var outputJsonFilePath = 'dictionary.json';
 // Read the contents of the text file asynchronously
 fs.readFile(inputFilePath, 'utf8', function (err, data) {
     if (err) {
@@ -19,12 +19,9 @@ fs.readFile(inputFilePath, 'utf8', function (err, data) {
 // Function to parse text to a JavaScript object
 function parseTextToJsonObject(text) {
     var lines = text.split('\n');
-    var result = {};
+    var result = [];
     lines.forEach(function (line) {
-        var _a = line.split(':'), key = _a[0], value = _a[1];
-        if (key && value) {
-            result[key.trim()] = value.trim();
-        }
+        result.push("".concat(line));
     });
     return result;
 }

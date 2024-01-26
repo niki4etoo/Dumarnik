@@ -1,7 +1,10 @@
 import './App.css'
+import Dictionary from './components/Dictionary/Dictionary';
 
 import Square from './components/GameBoard/Square'
 import MainInput from './components/GameBoard/UserInput/MainInput'
+
+let words = new Dictionary();
 
 function App() {
 

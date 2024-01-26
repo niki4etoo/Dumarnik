@@ -1,1 +1,7 @@
-{}
+{
+  "words": [
+    "name",
+    "age",
+    "occupation"
+  ]
+}
