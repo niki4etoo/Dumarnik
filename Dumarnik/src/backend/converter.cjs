@@ -16,6 +16,7 @@ fs.readFile(inputFilePath, 'utf8', function (err, data) {
         console.log('Conversion complete.');
     }
 });
+
 // Function to parse text to a JavaScript object
 function parseTextToJsonObject(text) {
     var lines = text.split('\n');
@@ -25,6 +26,7 @@ function parseTextToJsonObject(text) {
     });
     return result;
 }
+
 // Function to write a JavaScript object to a JSON file
 function writeObjectToJsonFile(obj, outputPath) {
     var jsonContent = JSON.stringify(obj, null, 2);
