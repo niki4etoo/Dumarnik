@@ -1,0 +1,20 @@
+.main--input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 2vh;
+}
+
+.main--input-active {
+    border-radius: 0.5rem;
+    border: 1px solid blue;
+
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.main--input-active:focus {
+    outline: none;
+}

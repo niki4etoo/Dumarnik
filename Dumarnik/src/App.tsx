@@ -1,18 +1,14 @@
 import './App.css'
 
-import Square from './components/GameBoard/Square'
-import MainInput from './components/GameBoard/UserInput/MainInput'
-
+import Board from './components/Game/Board/Board'
+import Intro from './components/Intro/Intro'
 
 function App() {
 
-  const numberOfCharacters = 64;
-
   return (
     <>
-      <div className='header'>Добре дошли в думарник</div>
-      <Square numberOfCharacters={numberOfCharacters} />
-      <MainInput />
+      <Intro />
+      <Board />
     </>
   )
 }
