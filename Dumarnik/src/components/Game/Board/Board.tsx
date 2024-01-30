@@ -1,8 +1,12 @@
 import Square from './Square'
 import MainInput from '../Input/Main'
 
+//Size of the board
+const x64 = 64; // 8x8
+const x36 = 36; // 6x6
+const x16 = 16; // 4x4
 
-const numberOfCharacters = 64; // default session
+const numberOfCharacters = x36; // default session
 
 const Board = () => {
 
