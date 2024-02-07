@@ -7,14 +7,13 @@ interface RandomBulgarianCharactersTableProps {
     numberOfCharacters: number;
 }
 
-
-
 const Square: React.FC<RandomBulgarianCharactersTableProps> = ({ numberOfCharacters }) => {
 
     // Generate a random set of Bulgarian alphabet characters
     const letters = charactersGenerator(numberOfCharacters);
+    const cellLetters = letters.map((letter, index) => ({ id: index, char: letter, backgroundColor: 'white', active: false }));
     const [rows, cols] = [Math.sqrt(numberOfCharacters), Math.sqrt(numberOfCharacters)]
-    const [cells, setCells] = useState(letters);
+    const [cells, setCells] = useState(cellLetters);
 
     const chunkedCharacters: string[][] = [];
 
@@ -22,11 +21,15 @@ const Square: React.FC<RandomBulgarianCharactersTableProps> = ({ numberOfCharact
         chunkedCharacters.push(letters.slice(i, i + cols));
     }
 
-    console.log(cells);
-
-    const handleClick = (rowIndex: number, columnIndex: number) => {
+    const handleClick = (rowIndex: number, columnIndex: number, e: any) => {
         console.log(`row index: ${rowIndex}; column index: ${columnIndex}`);
 
+        console.log(letters);
+        console.log(`Row index: ${rowIndex}  Column index: ${columnIndex}`);
+        console.log(cellLetters[rows * rowIndex + columnIndex].char);
+        console.log(cellLetters[rows * rowIndex + columnIndex].backgroundColor);
+        console.log(cellLetters[rows * rowIndex + columnIndex].active);
+        
     }
 
     return (
@@ -38,8 +41,9 @@ const Square: React.FC<RandomBulgarianCharactersTableProps> = ({ numberOfCharact
                             {row.map((char, columnIndex) => (
                                 <td id={rowIndex.toString() + columnIndex.toString()}
                                     className='default-cells'
-                                    onClick={() => handleClick(rowIndex, columnIndex)}
+                                    onClick={(e) => handleClick(rowIndex, columnIndex, e)}
                                     key={columnIndex}
+
                                 >{char}</td>
                             ))}
                         </tr>
