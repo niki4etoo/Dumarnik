@@ -1,52 +1,48 @@
-import React, { useState } from 'react';
-import { charactersGenerator } from './CharactersGenerator'
 
 import './table.css'
 
-interface RandomBulgarianCharactersTableProps {
-    numberOfCharacters: number;
-}
+const bulgarianAlphabet = {
+    1: 'А',
+    2: 'Б',
+    3: 'В',
+    4: 'Г',
+    5: 'Д',
+    6: 'Е',
+    7: 'Ж',
+    8: 'З',
+    9: 'И',
+    10: 'Й',
+    11: 'К',
+    12: 'Л',
+    13: 'М',
+    14: 'Н',
+    15: 'О',
+    16: 'П',
+    17: 'Р',
+    18: 'С',
+    19: 'Т',
+    20: 'У',
+    21: 'Ф',
+    22: 'Х',
+    23: 'Ц',
+    24: 'Ч',
+    25: 'Ш',
+    26: 'Щ',
+    27: 'Ъ',
+    28: 'Ь',
+    29: 'Ю',
+    30: 'Я',
+};
 
-const Square: React.FC<RandomBulgarianCharactersTableProps> = ({ numberOfCharacters }) => {
-
-    // Generate a random set of Bulgarian alphabet characters
-    const letters = charactersGenerator(numberOfCharacters);
-    const cellLetters = letters.map((letter, index) => ({ id: index, char: letter, backgroundColor: 'white', active: false }));
-    const [rows, cols] = [Math.sqrt(numberOfCharacters), Math.sqrt(numberOfCharacters)]
-    const [cells, setCells] = useState(cellLetters);
-
-    const chunkedCharacters: string[][] = [];
-
-    for (let i = 0; i < letters.length; i += rows) {
-        chunkedCharacters.push(letters.slice(i, i + cols));
-    }
-
-    const handleClick = (rowIndex: number, columnIndex: number, e: any) => {
-        console.log(`row index: ${rowIndex}; column index: ${columnIndex}`);
-
-        console.log(letters);
-        console.log(`Row index: ${rowIndex}  Column index: ${columnIndex}`);
-        console.log(cellLetters[rows * rowIndex + columnIndex].char);
-        console.log(cellLetters[rows * rowIndex + columnIndex].backgroundColor);
-        console.log(cellLetters[rows * rowIndex + columnIndex].active);
-        
-    }
+const Square = () => {
+    
 
     return (
         <div className='game-board'>
             <table className='default-table'>
                 <tbody>
-                    {chunkedCharacters.map((row, rowIndex) => (
-                        <tr key={rowIndex}>
-                            {row.map((char, columnIndex) => (
-                                <td id={rowIndex.toString() + columnIndex.toString()}
-                                    className='default-cells'
-                                    onClick={(e) => handleClick(rowIndex, columnIndex, e)}
-                                    key={columnIndex}
-
-                                >{char}</td>
-                            ))}
-                        </tr>
+                    {Object.entries(bulgarianAlphabet).map((item, index) => (
+                        <td key={index}>{item}</td>
                     ))}
                 </tbody>
             </table>
