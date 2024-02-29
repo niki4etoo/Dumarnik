@@ -1,51 +1,44 @@
+import { useEffect, useState } from 'react';
 
-import './table.css'
+// import { charactersGenerator } from "./CharactersGenerator";
 
-const bulgarianAlphabet = {
-    1: 'А',
-    2: 'Б',
-    3: 'В',
-    4: 'Г',
-    5: 'Д',
-    6: 'Е',
-    7: 'Ж',
-    8: 'З',
-    9: 'И',
-    10: 'Й',
-    11: 'К',
-    12: 'Л',
-    13: 'М',
-    14: 'Н',
-    15: 'О',
-    16: 'П',
-    17: 'Р',
-    18: 'С',
-    19: 'Т',
-    20: 'У',
-    21: 'Ф',
-    22: 'Х',
-    23: 'Ц',
-    24: 'Ч',
-    25: 'Ш',
-    26: 'Щ',
-    27: 'Ъ',
-    28: 'Ь',
-    29: 'Ю',
-    30: 'Я',
-};
+const characterSetSize = 36;
+const chunkSize = Math.sqrt(characterSetSize);
 
 const Square = () => {
-    
+
+    const [data, setData] = useState([[]]);
+
+    useEffect(() => {
+        fetch('http://localhost:3001/api')
+            .then((res) => res.json())
+            .then((data) => {
+                data = JSON.parse(data);
+                
+                let output = [];
+                for (let i = 0; i < characterSetSize; i += chunkSize) {
+                    output.push(data.slice(i, i + chunkSize))
+                }
+                setData(output);                
+                return data;
+            })
+    }, []);
 
     return (
         <div className='game-board'>
             <table className='default-table'>
                 <tbody>
-                    {Object.entries(bulgarianAlphabet).map((item, index) => (
-                        <td key={index}>{item}</td>
+                    {!data ? "loading..." : data.map((row, firstIdx) => (
+                        <tr key={firstIdx}>
+                            {row.map((char, secondIdx) => (
+                                <td key={firstIdx + secondIdx}>{char}</td>
+                            ))}
+                        </tr>
                     ))}
                 </tbody>
             </table>
+            <div>
+            </div>
         </div>
     );
 };

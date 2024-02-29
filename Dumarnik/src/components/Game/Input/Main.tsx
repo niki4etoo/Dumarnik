@@ -1,5 +1,3 @@
-import './maininput.css'
-
 const Main = () => {
 
     return (
