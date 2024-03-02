@@ -24,10 +24,10 @@ function generate(numberOfCharacters) {
 
 let output = JSON.stringify(generate(36));
 
-app.get('/api', (req, res) => {
+app.get('/CharacterSet', (req, res) => {
 
   res.setHeader('Access-Control-Allow-Origin', `http://${HOST}:${CLIENT_PORT}`);
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Methods', 'GET');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Content-Type', 'application/json');
