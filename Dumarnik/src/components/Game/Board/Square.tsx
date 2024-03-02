@@ -10,7 +10,7 @@ const Square = () => {
     const [data, setData] = useState([[]]);
 
     useEffect(() => {
-        fetch('http://localhost:3001/api')
+        fetch('http://localhost:3001/CharacterSet')
             .then((res) => res.json())
             .then((data) => {
                 data = JSON.parse(data);
@@ -21,7 +21,9 @@ const Square = () => {
                 }
                 setData(output);                
                 return data;
-            })
+            }).catch((e) => { // to do 
+                return e;
+            });
     }, []);
 
     return (
