@@ -84,6 +84,14 @@ td {
     text-align: center;
 }
 
+td.blue {
+    background-color: blue;
+}
+
+td.default {
+    background-color: white;
+}
+
 .game-board {
     display: flex;
     justify-content: center;

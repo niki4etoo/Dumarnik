@@ -1,39 +1,23 @@
-import { useEffect, useState } from 'react';
+const Square = (props: any) => {
 
-// import { charactersGenerator } from "./CharactersGenerator";
-
-const characterSetSize = 36;
-const chunkSize = Math.sqrt(characterSetSize);
-
-const Square = () => {
-
-    const [data, setData] = useState([[]]);
-
-    useEffect(() => {
-        fetch('http://localhost:3001/CharacterSet')
-            .then((res) => res.json())
-            .then((data) => {
-                data = JSON.parse(data);
-                
-                let output = [];
-                for (let i = 0; i < characterSetSize; i += chunkSize) {
-                    output.push(data.slice(i, i + chunkSize))
-                }
-                setData(output);                
-                return data;
-            }).catch((e) => { // to do 
-                return e;
-            });
-    }, []);
+    function compare(arr: number[], n: number){
+        if(arr.includes(n)){
+            return true;
+        }
+        return false;
+    }
 
     return (
         <div className='game-board'>
             <table className='default-table'>
                 <tbody>
-                    {!data ? "loading..." : data.map((row, firstIdx) => (
+                    {!props.data ? "loading..." : props.data.map((row: [], firstIdx: number) => (
                         <tr key={firstIdx}>
-                            {row.map((char, secondIdx) => (
-                                <td key={firstIdx + secondIdx}>{char}</td>
+                            {row.map((char: string, secondIdx: number) => (
+                                <td 
+                                
+                                className={compare(props.index, ((firstIdx * props.columns - 1) + (firstIdx + 1) + secondIdx)) ? `blue` : `default`}
+                                key={(firstIdx * props.columns - 1) + (firstIdx + 1) + secondIdx}>{char}</td>
                             ))}
                         </tr>
                     ))}
