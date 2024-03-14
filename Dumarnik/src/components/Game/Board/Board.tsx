@@ -4,6 +4,10 @@ import Square from './Square'
 import MainInput from '../Input/Main'
 import Timer from '../Session/Timer'
 
+const PROTOCOL = 'http';
+const HOST_NAME = 'localhost';
+const PORT = 3001;
+
 const characterSetSize = 36;
 const chunkSize = Math.sqrt(characterSetSize);
 
@@ -13,7 +17,7 @@ const Board = () => {
     const [charSet, setCharSet] = useState([[]]);
 
     useEffect(() => {
-        fetch('http://localhost:3001/CharacterSet')
+        fetch(`${PROTOCOL}://${HOST_NAME}:${PORT}/CharacterSet`)
             .then((res) => res.json())
             .then((data) => {
                 data = JSON.parse(data);
