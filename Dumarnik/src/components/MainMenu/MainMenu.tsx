@@ -1,5 +1,7 @@
 
-import './mainmenu.css';
+import { Link } from 'react-router-dom'
+
+import '../../App.css'
 
 const MainMenu = () => {
 
@@ -7,10 +9,10 @@ const MainMenu = () => {
         <>
             <div className="menu">
                 <button onClick={() => { console.log("Start the game") }}>
-                    Start
+                    <Link to="/board">Start</Link>
                 </button>
                 <button onClick={() => { console.log("Open the settings") }}>
-                    Settings
+                    <Link to="/settings">Settings</Link>
                 </button>
             </div>
         </>
